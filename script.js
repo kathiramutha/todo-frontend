@@ -6,6 +6,8 @@ fetch(API_URL)
 .then(data => {
 
 ```
+        console.log("Tasks:", data);
+
         const taskList = document.getElementById("taskList");
         taskList.innerHTML = "";
 
@@ -15,7 +17,8 @@ fetch(API_URL)
             taskList.appendChild(li);
         });
 
-    });
+    })
+    .catch(error => console.log("Fetch Error:", error));
 ```
 
 }
@@ -34,9 +37,11 @@ fetch(API_URL, {
 })
 .then(response => response.json())
 .then(data => {
+    console.log("Added:", data);
     fetchTasks();
     document.getElementById("taskInput").value = "";
-});
+})
+.catch(error => console.log("POST Error:", error));
 ```
 
 }
